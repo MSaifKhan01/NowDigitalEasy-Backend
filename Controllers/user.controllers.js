@@ -1,7 +1,7 @@
 const { UserModel } = require("../Models/user.model")
 
 
-
+// For Adding User
 const AddUser= async(req,res)=>{
     const {name,role,email,phoneNumber}=req.body
 
@@ -28,6 +28,7 @@ const AddUser= async(req,res)=>{
 
 }
 
+// For Getting All Users
 const AllUser= async(req,res)=>{
     try {
         const users = await UserModel.find();
@@ -41,6 +42,7 @@ const AllUser= async(req,res)=>{
     }
 }
 
+// For Getting particular user
 const SingleUser=async(req,res)=>{
     const {id}=req.params
     try {
@@ -56,7 +58,7 @@ const SingleUser=async(req,res)=>{
     }
 }
 
-
+// For Deleting a User
 const RemoveUser=async(req,res)=>{
     const {id}=req.params
 
@@ -77,6 +79,7 @@ const RemoveUser=async(req,res)=>{
     }
 }
 
+// For Updating a User
 const UpdateUser= async(req,res)=>{
     const {id}=req.params
     const {name,role,email,phoneNumber}=req.body
