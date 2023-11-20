@@ -6,6 +6,10 @@ const AddUser= async(req,res)=>{
     const {name,role,email,phoneNumber}=req.body
 
     try {
+
+        if(!name||!email||!phoneNumber){
+            return res.status(400).send({"msg":"You need to Fill All Fields "})
+        }
         const user = await UserModel.findOne({ email });
         // console.log(user)
         if(user){
@@ -17,10 +21,9 @@ const AddUser= async(req,res)=>{
          return res.status(201).send({"msg":"user added succesfull"})
         
     } catch (error) {
-        return res.status(500).send({"msg":error.message})
-        // return res.status(500).send({"msg": error.message});
 
-        
+        return res.status(500).send({"msg":error.message})
+    
     }
 
 }
@@ -28,6 +31,10 @@ const AddUser= async(req,res)=>{
 const AllUser= async(req,res)=>{
     try {
         const users = await UserModel.find();
+        if(users.length===0){
+            return res.status(404).json({ "msg": "Any Users not  Found" });
+        }
+        // console.log(users)
         return res.status(200).send(users)
     } catch (error) {
         return res.status(500).send({"msg":error.message})
@@ -37,6 +44,7 @@ const AllUser= async(req,res)=>{
 const SingleUser=async(req,res)=>{
     const {id}=req.params
     try {
+        
         const user= await UserModel.findById({_id:id})
 
         if (!user) {
@@ -69,4 +77,26 @@ const RemoveUser=async(req,res)=>{
     }
 }
 
-module.exports={AddUser,AllUser,SingleUser,RemoveUser}
+const UpdateUser= async(req,res)=>{
+    const {id}=req.params
+    const {name,role,email,phoneNumber}=req.body
+
+    try {
+        const UpdateData= await UserModel.findByIdAndUpdate({_id:id},{name,role,email,phoneNumber})
+
+    if(!UpdateData){
+        return res.status(404).send({"msg":"User Not Found"})
+
+    }
+
+    return res.status(200).send({"msg":"User Data Updated",UpdateData})
+        
+    } catch (error) {
+        return res.status(500).send({"msg":error.message})
+    }
+}
+
+
+
+
+module.exports={AddUser,AllUser,SingleUser,RemoveUser,UpdateUser}
