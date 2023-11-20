@@ -5,6 +5,12 @@
 
 This project is a Node.js application for managing users.
 
+
+### Backend API
+
+For accessing the backend API, visit [Backend-API](https://nowdigitaleasy-nwwj.onrender.com).
+
+
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
@@ -54,13 +60,13 @@ npm start
 
 
 
-Visit [http://localhost:5038](http://localhost:5038) in your browser.
+
 
 ## Documentation
 
 ### Swagger UI
 
-Explore the API using Swagger UI. Visit [http://localhost:5038/docs](http://localhost:5038/docs) for interactive documentation.
+Explore the API using Swagger UI. Visit [Click here to see Swagger Doc](https://nowdigitaleasy-nwwj.onrender.com/docs) for interactive documentation.
 
 ## Routes
 
