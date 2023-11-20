@@ -1,6 +1,6 @@
 
 
-```markdown
+
 # NowDigitalEasy-Backend
 
 This project is a Node.js application for managing users.
@@ -79,5 +79,5 @@ Explore the API using Swagger UI. Visit [http://localhost:5038/docs](http://loca
 
 
 
-```
+
 
