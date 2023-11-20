@@ -10,8 +10,6 @@ This project is a Node.js application for managing users.
 - [Usage](#usage)
 - [Documentation](#documentation)
 - [Routes](#routes)
-- [Contributing](#contributing)
-- [License](#license)
 - [Tech Stack](#tech-stack)
 
 ## Installation
