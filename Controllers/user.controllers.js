@@ -37,7 +37,11 @@ const AllUser= async(req,res)=>{
 const SingleUser=async(req,res)=>{
     const {id}=req.params
     try {
-        const user= await UserModel.find({_id:id})
+        const user= await UserModel.findById({_id:id})
+
+        if (!user) {
+            return res.status(404).json({ "msg": "User not Found" });
+        }
         return res.status(200).send(user)
     } catch (error) {
         return res.status(500).send({"msg":error.message})
@@ -45,4 +49,24 @@ const SingleUser=async(req,res)=>{
 }
 
 
-module.exports={AddUser,AllUser,SingleUser}
+const RemoveUser=async(req,res)=>{
+    const {id}=req.params
+
+    try {
+        const DeleteUser =await UserModel.findByIdAndDelete({_id:id})
+        // console.log(DeleteUser)
+        if(!DeleteUser){
+            return res.status(404).send({"msg":"User Not Found"})
+        }
+
+        return res.status(200).send({"msg":"User Deleted Succesfully",DeleteUser})
+      // with 204(For Deletion Status code) status code you will not get any response thats why I used 200 status code in above
+
+    } catch (error) {
+
+        return res.status(500).send({"msg":error.message})
+        
+    }
+}
+
+module.exports={AddUser,AllUser,SingleUser,RemoveUser}
