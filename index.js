@@ -45,7 +45,7 @@ const options = {
 
 
 app.get("/",(req,res)=>{
-    res.status(200).send("welcome to Home Page ")
+    res.status(200).send("Welcome to Home Page ")
 })
 
 app.use("/user",UserRouter)
